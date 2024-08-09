@@ -6,4 +6,8 @@ export abstract class Base {
     constructor() {
         this._id = randomUUID()
     }
+
+    public get id(): string {
+        return this._id;
+    }
 }

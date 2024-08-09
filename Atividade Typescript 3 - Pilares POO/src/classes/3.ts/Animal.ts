@@ -1,4 +1,4 @@
-export class Animal {
+export abstract class Animal {
     private _nome: string;
     private _idade: number;
     private _peso: number;

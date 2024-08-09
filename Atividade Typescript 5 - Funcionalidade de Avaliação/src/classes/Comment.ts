@@ -13,4 +13,12 @@ export class Comment extends Base {
         this._product = product;
         this._fromUser = fromUser;
     }
+
+    public get product(): Product {
+        return this._product;
+    }
+
+    public get fromUser(): User {
+        return this._fromUser;
+    }
 }

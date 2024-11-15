@@ -21,17 +21,20 @@ export class User extends Base {
     }
 
     public removeFromCart(product: Product): void {
-        this._cart = this._cart.filter(p => p.id !== product.id);
+        const index = this._cart.findIndex(item => item.id === product.id)
+
+        if (index === -1) {
+            console.log(`${product.name} removido com sucesso`)
+            return
+        }
+
+        this._cart.splice(index, 1)
     }
 
     public showProducts(): string {
-        return this._cart.map(product => product.show()).join(', ');
+        const somaProdutos = this._cart.reduce((prev, acc) => prev + acc.value, 0)
+        const dados = this._cart.map(product => `${product.name}`).join(", ")
+        const response = `Produtos: \n${dados}, Soma dos produtos: ${somaProdutos}`
+        return response;
     }
-
-    public rateProduct(product: Product, rate: Rate): void {
-    //     const success = product.rate(rate, this);
-    //     if (!success) {
-    //         console.log("----------- Este produto não pode ser avaliado mais de uma vez !!! -----------");
-    //     }
-     }
 }
